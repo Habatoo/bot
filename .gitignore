@@ -1,0 +1,14 @@
+~*
+
+*.pyc
+*.bat
+*.ipynb
+
+venv/
+data/~*
+data/*.zip
+__pycache__
+_m/
+bot_files/~*
+bot_files/__pycache__/
+bot_files/*.pyc
