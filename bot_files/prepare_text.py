@@ -42,7 +42,10 @@ class Text_prep:
     def response(self, df_tfidf, user_response, model):
         # defining a function that returns response to query using tf-idf
         lemma = self.text_normalization(user_response) # calling the function to perform text normalization
+        print('lemma', lemma)
         tf = model.fit_transform([lemma]).toarray() # applying tf-idf
+        print(tf.shape)
+        print(df_tfidf.shape)
         cos = 1 - pairwise_distances(df_tfidf, tf, metric='cosine') # applying cosine similarity
         index_value = cos.argmax() # getting index value 
         return self.df['Response'].loc[index_value]

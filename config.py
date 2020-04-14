@@ -12,11 +12,11 @@ class Config:
 
     with open('./data/stop_words.pkl', 'rb') as f:
         STOPWORDS = pickle.load(f)
-
-    _, MODEL = make_data.Make_Df().make_df_tfidf(DATAFRAME)
+    with open('./data/model.pkl', 'rb') as f:
+        MODEL = pickle.load(f)
 
 
 if __name__ == '__main__':
     test_cinfig = Config()
-    print(test_cinfig.DATAFRAME_TFIDF.head(2))
-    print(test_cinfig.STOPWORDS)
+    print(test_cinfig.DATAFRAME.shape)
+    print(test_cinfig.DATAFRAME_TFIDF.shape)

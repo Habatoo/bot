@@ -18,9 +18,10 @@ class Bot:
         self.stopwords = stopwords
         self.df_tfidf = df_tfidf
         self.model = model
+        self.user_text = prepare_text.Text_prep(self.stopwords)
 
     def start_bot(self):
-        user_text = prepare_text.Text_prep(self.stopwords)
+        
 
         def greeting(sentence):
             """If user's input is a greeting, return a greeting response"""
@@ -43,7 +44,8 @@ class Bot:
                         print("Бот: " + greeting(user_response))
                     else:
                         print("Бот: ",end="")
-                        print(user_text.response(self.df_tfidf, user_response, self.model))
+                        print(self.df_tfidf.shape, user_response)
+                        print(self.user_text.response(self.df_tfidf, user_response, self.model))
             else:
                 flag=False
                 print("Бот: Пока! Увидимся...")

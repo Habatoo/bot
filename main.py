@@ -1,5 +1,4 @@
-from bot_files import bot
-from bot_files import make_data
+from bot_files import bot, prepare_text
 from config import Config
 
 # import nltk
@@ -15,4 +14,7 @@ stopwords = text_dialog.STOPWORDS
 df = text_dialog.DATAFRAME
 df_tfidf = text_dialog.DATAFRAME_TFIDF
 model = text_dialog.MODEL
-bot.Bot(df_tfidf, stopwords, model).start_bot()
+
+# bot.Bot(df_tfidf, stopwords, model).start_bot()
+text_prep = prepare_text.Text_prep(stopwords)
+print('norm', text_prep.text_normalization('Ты кто?'))
