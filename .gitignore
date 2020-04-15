@@ -8,7 +8,6 @@ venv/
 data/~*
 data/*.zip
 data/*.csv
-data/*.txt
 
 __pycache__
 _m/

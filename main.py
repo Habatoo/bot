@@ -9,12 +9,14 @@ from config import Config
 # nltk.download('stopwords')
 
 text_dialog = Config()
-text_list = text_dialog.CORPUS.readlines()
+# text_list = text_dialog.CORPUS.readlines()
 stopwords = text_dialog.STOPWORDS
 df = text_dialog.DATAFRAME
 df_tfidf = text_dialog.DATAFRAME_TFIDF
 model = text_dialog.MODEL
 
-# bot.Bot(df_tfidf, stopwords, model).start_bot()
 text_prep = prepare_text.Text_prep(stopwords)
-print('norm', text_prep.text_normalization('Ты кто?'))
+# print('norm', text_prep.text_normalization('Ты кто?'))
+# print(text_prep.response(df, df_tfidf, 'Ты кто?', model))
+
+bot.Bot(df, df_tfidf, stopwords, model).start_bot()
