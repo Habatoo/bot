@@ -11,7 +11,7 @@ class Config:
 
     with open('./data/stop_words.pkl', 'rb') as f:
         STOPWORDS = pickle.load(f)
-    with open('./data/model.pkl', 'rb') as f:
+    with open('./data/model_LinearSVC.pkl', 'rb') as f:
         MODEL = pickle.load(f)
 
 

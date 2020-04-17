@@ -18,5 +18,5 @@ model = text_dialog.MODEL
 text_prep = prepare_text.Text_prep(stopwords)
 # print('norm', text_prep.text_normalization('Ты кто?'))
 # print(text_prep.response(df, df_tfidf, 'Ты кто?', model))
-
+# print(text_prep.model_answ('Ты кто?', model)) 
 bot.Bot(df, df_tfidf, stopwords, model).start_bot()

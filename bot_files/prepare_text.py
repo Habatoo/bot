@@ -44,3 +44,7 @@ class Text_prep:
         index_value = cos.argmax() # getting index value 
         return df['Response'].loc[index_value]
 
+    def model_answ(self, user_response, model):
+        # defining a function that returns response to query using tf-idf
+        return model.predict([self.text_normalization(user_response)])[0]
+

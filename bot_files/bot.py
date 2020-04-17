@@ -36,8 +36,11 @@ class Bot:
                         print("Бот: " + greeting(user_response))
                     else:
                         print("Бот: ", end="")
-                        print(self.user_text.response(
+                        try:
+                            print(self.user_text.response(
                                 self.df, self.df_tfidf, user_response, self.model))
+                        except:
+                            print(self.user_text.model_answ(user_response, self.model))
             else:
                 flag = False
                 print("Бот: Пока! Увидимся...")
