@@ -40,7 +40,7 @@ class Bot:
                             print(self.user_text.response(
                                 self.df, self.df_tfidf, user_response, self.model))
                         except:
-                            print(self.user_text.model_answ(user_response, self.model))
+                            print(self.user_text.model_answ(user_response, self.model_2))
             else:
                 flag = False
                 print("Бот: Пока! Увидимся...")
