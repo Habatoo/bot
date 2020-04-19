@@ -1,7 +1,7 @@
 import warnings
 import random
 warnings.filterwarnings('ignore')
-from bot_files import prepare_text
+from bot_files import prepare_text, voice_totext
 
 
 class Bot:
@@ -22,11 +22,23 @@ class Bot:
             for word in sentence.split():
                 if word.lower() in Bot.GREETING_INPUTS:
                     return random.choice(Bot.GREETING_RESPONSES)
+
+        def input_change(voice):
+            if voice:
+                return voice_totext.assistant(voice_totext.myCommand())
+            return input().lower()
+
         flag = True
+        voice = False
         print("Бот: Я Бот. Пиши вопрос, я отвечу. Если хочешь уйти, пиши пока!")
+        print("Бот: Могу отвечать на голос - пиши 'голос'. Если хочешь опять писать, скажи 'стоп голос'")
         while flag == True:
             print("User: ", end="")
-            user_response = input().lower()
+            user_response = input_change(voice)
+            if user_response == 'голос':
+                voice = True
+            if user_response == 'стоп голос':
+                voice = False 
             if user_response != 'пока':
                 if user_response == 'спасибо' or user_response == 'спсб':
                     flag = False
