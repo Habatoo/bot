@@ -30,29 +30,30 @@ class Bot:
 
         flag = True
         voice = False
-        print("Бот: Я Бот. Пиши вопрос, я отвечу. Если хочешь уйти, пиши пока!")
-        print("Бот: Могу отвечать на голос - пиши 'голос'. Если хочешь опять писать, скажи 'стоп голос'")
+        print("Bot: Я Бот. Пиши вопрос, я отвечу. Если хочешь уйти, пиши пока!")
+        print("Bot: Могу отвечать на голос - пиши 'голос'. Если хочешь опять писать, скажи 'стоп голос'")
         while flag == True:
             print("User: ", end="")
             user_response = input_change(voice)
             if user_response == 'голос':
                 voice = True
+                continue
             if user_response == 'стоп голос':
-                voice = False 
-            if user_response != 'пока':
-                if user_response == 'спасибо' or user_response == 'спсб':
-                    flag = False
-                    print("Бот: всегда пожалуйста...")
+                voice = False
+                continue 
+            if user_response == 'спасибо' or user_response == 'спсб':
+                print("Bot: всегда пожалуйста...")
+                continue
+            elif user_response != 'пока':
+                if greeting(user_response) != None:
+                    print("Bot: " + greeting(user_response))
                 else:
-                    if greeting(user_response) != None:
-                        print("Бот: " + greeting(user_response))
-                    else:
-                        print("Бот: ", end="")
-                        try:
-                            print(self.user_text.response(
-                                self.df, self.df_tfidf, user_response, self.model))
-                        except:
-                            print(self.user_text.model_answ(user_response, self.model_2))
+                    print("Bot: ", end="")
+                    try:
+                        print(self.user_text.response(
+                            self.df, self.df_tfidf, user_response, self.model))
+                    except:
+                        print(self.user_text.model_answ(user_response, self.model_2))
             else:
                 flag = False
-                print("Бот: Пока! Увидимся...")
+                print("Bot: Пока! Увидимся...")
